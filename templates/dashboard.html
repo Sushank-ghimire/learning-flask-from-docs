@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mx-auto mt-10">
+    <h1 class="text-3xl font-bold mb-6">Dashboard</h1>
+    <h2 class="text-xl mb-4">Welcome, {{ current_user['username'] }}!</h2>
+    
+    <table class="w-full border-collapse border border-gray-300">
+        <thead>
+            <tr class="bg-gray-200">
+                <th class="py-2 px-4 border">Username</th>
+                <th class="py-2 px-4 border">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for email, user in users.items() %}
+            <tr>
+                <td class="py-2 px-4 border">{{ user['username'] }}</td>
+                <td class="py-2 px-4 border">{{ email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('logout') }}" class="mt-5 inline-block bg-red-500 text-white py-2 px-4 rounded">Logout</a>
+</div>
+{% endblock %}

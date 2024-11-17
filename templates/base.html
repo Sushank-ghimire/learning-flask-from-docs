@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title | default("My App") }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="bg-blue-600 p-4 text-white">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold">MyApp</a>
+        <div class="space-x-4">
+          <a href="/" class="hover:text-gray-200">Home</a>
+          <a href="/about" class="hover:text-gray-200">About</a>
+          <a href="/contact" class="hover:text-gray-200">Contact</a>
+
+          {% if user %}
+          <a
+            href="/dashboard"
+            class="bg-green-500 px-3 py-1 rounded hover:bg-green-600"
+            >Dashboard</a
+          >
+          <a
+            href="/logout"
+            class="bg-red-500 px-3 py-1 rounded hover:bg-red-600"
+            >Logout</a
+          >
+          {% else %}
+          <a
+            href="/login"
+            class="bg-green-500 px-3 py-1 rounded hover:bg-green-600"
+            >Login</a
+          >
+          <a
+            href="/register"
+            class="bg-yellow-500 px-3 py-1 rounded hover:bg-yellow-600"
+            >Register</a
+          >
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container mx-auto p-6">{% block content %}{% endblock %}</div>
+  </body>
+</html>
